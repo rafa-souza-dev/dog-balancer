@@ -7,7 +7,7 @@ import (
 )
 
 func TestIncrementSliceIndexWhenRecieveLastIndex(t *testing.T) {
-	slice := []int{1, 2, 3}
+	slice := []string{"a", "b", "c"}
 	lastIndex := len(slice) - 1
 	index := lastIndex
 
@@ -19,7 +19,7 @@ func TestIncrementSliceIndexWhenRecieveLastIndex(t *testing.T) {
 }
 
 func TestIncrementSliceIndexWhenRecieveMediumIndex(t *testing.T) {
-	slice := []int{1, 2, 3}
+	slice := []string{"a", "b", "c"}
 	index := 1
 
 	utils.IncrementSliceIndex(&index, slice)

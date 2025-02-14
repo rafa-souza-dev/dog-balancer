@@ -1,6 +1,6 @@
 package utils
 
-func IncrementSliceIndex(index *int, slice []int) {
+func IncrementSliceIndex(index *int, slice []string) {
 	if len(slice) == 0 {
 		*index = 0
 
