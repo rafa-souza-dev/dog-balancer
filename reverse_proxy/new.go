@@ -5,7 +5,7 @@ import (
 	"net/url"
 )
 
-func NewReverseProxy(target string) (*httputil.ReverseProxy, error) {
+func newReverseProxy(target string) (*httputil.ReverseProxy, error) {
 	targetURL, err := url.Parse(target)
 	if err != nil {
 		return nil, err

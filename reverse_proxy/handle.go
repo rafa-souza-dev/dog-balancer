@@ -3,14 +3,12 @@ package reverseproxy
 import (
 	"log"
 	"net/http"
-	"net/http/httputil"
 	"sync"
 
 	"github.com/rafa-souza-dev/dog-balancer/utils"
 )
 
 func HandleRedirectRequest(
-	proxy *httputil.ReverseProxy, 
 	currentIndex *int,
 	mu *sync.Mutex,
 	slice []string,
@@ -19,6 +17,11 @@ func HandleRedirectRequest(
 		log.Printf("Forwarding request: %s %s", r.Method, r.URL.Path)
 
 		mu.Lock()
+		proxy, err := newReverseProxy(slice[*currentIndex])
+		if err != nil {
+			log.Fatalf("Error when create proxy: %v", err)
+		}
+
 		utils.IncrementSliceIndex(currentIndex, slice)
 		mu.Unlock()
 	
