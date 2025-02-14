@@ -14,9 +14,9 @@ func HandleRedirectRequest(
 	slice []string,
 ) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("Forwarding request: %s %s", r.Method, r.URL.Path)
-
 		mu.Lock()
+		log.Printf("Forwarding request: %s %s %s", r.Method, r.URL.Path, slice[*currentIndex])
+
 		proxy, err := newReverseProxy(slice[*currentIndex])
 		if err != nil {
 			log.Fatalf("Error when create proxy: %v", err)
