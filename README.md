@@ -41,7 +41,7 @@ A função `IncrementSliceIndex` trás o comportamento necessário para alternar
 
 ## Evitando race conditions
 
-Sempre que uma requisição é feita, uma nova `goroutine` é agendada. Isso trás consigo a preocupação de compartilhamento de recursos. Para evitar um comportamento inesperado, proveniente de uma condição de corrida, foi utilizado um `mutex`, garantindo a leitura e escrita de forma segura do index atual:
+Sempre que uma requisição é feita, uma nova `goroutine` é agendada. Isso trás consigo a preocupação de compartilhamento de recursos. Para evitar um comportamento inesperado proveniente de uma condição de corrida, foi utilizado um `mutex`, garantindo a leitura e escrita de forma segura do índice atual:
 
 ```go
 mu.Lock()
@@ -53,4 +53,4 @@ mu.Unlock()
 
 ## Futuro
 
-Até então, o `dog-balancer` não tem suporte a configurações de TLS, então só pode ser usado com http. Adicionar esse suporte pode ser interessante. **Devo dizer que este é um projeto voltado para estudos, dog-balancer NÃO deve ser usado em produção.** Nunca nem se quer deve sonhar em substituir um nginx da vida. PR's são bem vindos.
+Até então, o `dog-balancer` não tem suporte a configurações de TLS, então só pode ser usado com http. Adicionar esse suporte pode ser interessante. **Devo dizer que este é um projeto voltado para estudos, dog-balancer NÃO deve ser usado em produção.** Para produção use algo como nginx. PR's são bem vindos.
