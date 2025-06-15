@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'dog-balancer'
+    static_configs:
+      - targets: ['dog-balancer:8000']
