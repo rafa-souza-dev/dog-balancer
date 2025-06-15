@@ -1,9 +1,46 @@
-version: '3.8'
+version: "3.8"
 
 services:
+  server1:
+    build:
+      context: ./backend
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+
+  server2:
+    build:
+      context: ./backend
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+
+  server3:
+    build:
+      context: ./backend
+    ports:
+      - "8003:8003"
+    environment:
+      - PORT=8003
+
+  server4:
+    build:
+      context: ./backend
+    ports:
+      - "8004:8004"
+    environment:
+      - PORT=8004
+
   dog-balancer:
     build:
       context: .
     ports:
       - "8000:8000"
     restart: always
+    depends_on:
+      - server1
+      - server2
+      - server3
+      - server4

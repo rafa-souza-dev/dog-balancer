@@ -11,10 +11,10 @@ import (
 
 var (
 	backends = []string{
-		"http://localhost:8001",
-		"http://localhost:8002",
-		"http://localhost:8003",
-		"http://localhost:8004",
+		"http://server1:8001",
+		"http://server2:8002",
+		"http://server3:8003",
+		"http://server4:8004",
 	}
 
 	currentIndex = 0
